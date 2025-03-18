@@ -16,6 +16,8 @@
                     <h3>Nome: [[*{nome}]]</h3>
                     <p>Ingredienti: [[*{descrizione}]]</p>
                     <p>Prezzo: [[*{prezzo}]] euro</p>
+                    <div th:insert="~{fragments/resources :: button('/show')}">
+                    </div>
                 </div>
             </div>
         </div>

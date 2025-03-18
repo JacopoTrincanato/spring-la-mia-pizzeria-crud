@@ -11,9 +11,8 @@
 </head>
 
 <body>
-    <div th:fragment="scripts">
-        <script th:src="@{/webjars/bootstrap/5.3.3/js/boostrap.bundle.min.js}"></script>
-    </div>
+    <a th:fragment="button(link, title)" th:href="${link}" th:text="${title}" class="btn btn-primary">
+    </a>
 </body>
 
 </html>

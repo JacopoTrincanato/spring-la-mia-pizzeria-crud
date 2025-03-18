@@ -32,6 +32,7 @@ public class PizzaController {
     // creo la rotta show
     @GetMapping("/{id}")
     public String show(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("id", id);
         // creo la singola pizza
         Pizza pizza = repository.findById(id).get();
         model.addAttribute("pizza", pizza);
