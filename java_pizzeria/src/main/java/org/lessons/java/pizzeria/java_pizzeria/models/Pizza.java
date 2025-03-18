@@ -2,7 +2,7 @@ package org.lessons.java.pizzeria.java_pizzeria.models;
 
 import java.math.BigDecimal;
 
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,17 +12,18 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "pizzeria")
+@Table(name = "pizze")
 public class Pizza {
     // attributi
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Size(min = 5, max = 15, message = "Il nome della pizza deve avere almeno 5 caratteri")
+    @Size(min = 5, max = 25, message = "Il nome della pizza deve avere almeno 5 caratteri")
     @Column(name = "nome_pizza", nullable = false)
     @NotBlank(message = "Il campo nome non può essere vuoto o nullo")
     private String nome;
@@ -38,8 +39,8 @@ public class Pizza {
     private String urlFoto;
 
     @Column(name = "prezzo_pizza", nullable = false)
-    @NotBlank(message = "Il campo prezzo non può essere vuoto o nullo")
-    @Min(value = 0, message = "Il prezzo non può avere un valor einferiore a zero")
+    @NotNull
+    @Min(value = 0, message = "Il prezzo non può avere un valore inferiore a zero")
     private BigDecimal prezzo;
 
     // metodi
