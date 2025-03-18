@@ -7,7 +7,21 @@
 </head>
 
 <body>
-    <p th:each="pizza : ${pizze}"></p>
+
+    <div class="container-fluid d-flex justify-content-between">
+        <div class="row row-cols row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+            <div class="card" th:each="pizza : ${pizze}" th:object="${pizza}">
+                <img th:src=@{[[*{urlFoto}]]}>
+                <div class="card-body">
+                    <h3>Nome: [[*{nome}]]</h3>
+                    <p>Ingredienti: [[*{descrizione}]]</p>
+                    <p>Prezzo: [[*{prezzo}]] euro</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
 </body>
 
 </html>

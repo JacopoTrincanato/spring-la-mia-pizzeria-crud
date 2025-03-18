@@ -83,4 +83,9 @@ public class Pizza {
     public void setPrezzo(BigDecimal prezzo) {
         this.prezzo = prezzo;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Nome: %s, Descrizione: %s, Prezzo: %bd", this.nome, this.descrizione, this.prezzo);
+    }
 }
