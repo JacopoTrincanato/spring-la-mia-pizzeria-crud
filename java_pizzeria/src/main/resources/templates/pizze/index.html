@@ -2,29 +2,32 @@
 <html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <div th:replace="~{fragments/resources :: headTags}"></div>
+    <th:block th:replace="~{fragments/resources :: headTags}"></th:block>
     <title>Pizze</title>
 </head>
 
-<body>
+<body class="bg-light">
 
-    <div class="container-fluid d-flex justify-content-between">
-        <div class="row row-cols row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
-            <div class="card" th:each="pizza : ${pizze}" th:object="${pizza}">
-                <img th:src=*{urlFoto}>
-                <div class="card-body">
-                    <h1>[[*{id}]]</h1>
-                    <h3>Nome: [[*{nome}]]</h3>
-                    <p>Ingredienti: [[*{descrizione}]]</p>
-                    <p>Prezzo: [[*{prezzo}]] euro</p>
-                    <div th:insert="~{fragments/resources :: button('/pizze/' + *{id}, 'Leggi di più')}">
+    <header>
+        <h1 class="text-center">Lista pizze</h1>
+    </header>
+    <main>
+
+        <div class="container-fluid">
+            <div class="row row-cols row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
+                <div class="card" th:each="pizza : ${pizze}" th:object="${pizza}">
+                    <div class="card-body">
+                        <img th:src=*{urlFoto} class="w-100">
+                        <h3>Nome: [[*{nome}]]</h3>
+                        <p>Ingredienti: [[*{descrizione}]]</p>
+                        <p>Prezzo: [[*{prezzo}]] euro</p>
+                        <div th:insert="~{fragments/resources :: button('/pizze/' + *{id}, 'Leggi di più')}">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    </div>
+    </main>
 
     <p th:text="Non ci sono pizze disponibili" th:unless="${pizze.size() > 0}"></p>
 </body>
