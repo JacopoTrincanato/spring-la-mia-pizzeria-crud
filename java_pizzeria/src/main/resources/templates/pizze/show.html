@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/resources :: headTags}"></div>
+    <title>Show</title>
+</head>
+
+<body>
+    <th:block th:fragment="showLink">
+
+        <div class="container m-auto" th:object="${pizza}">
+            <img th:src=*{urlFoto}>
+            <h1 class="mb-3">Nome: [[*{nome}]]</h1>
+            <h2 class="mb-3">Ingredienti: [[*{descrizione}]]</h2>
+            <h2 class="mb-3">Prezzo: [[*{prezzo}]] euro</h2>
+        </div>
+    </th:block>
+</body>
+
+</html>
