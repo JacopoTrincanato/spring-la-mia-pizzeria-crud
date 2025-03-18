@@ -13,10 +13,11 @@
             <div class="card" th:each="pizza : ${pizze}" th:object="${pizza}">
                 <img th:src=*{urlFoto}>
                 <div class="card-body">
+                    <h1>[[*{id}]]</h1>
                     <h3>Nome: [[*{nome}]]</h3>
                     <p>Ingredienti: [[*{descrizione}]]</p>
                     <p>Prezzo: [[*{prezzo}]] euro</p>
-                    <div th:insert="~{fragments/resources :: button('/show')}">
+                    <div th:insert="~{fragments/resources :: button('/pizze/' + *{id}, 'Leggi di più')}">
                     </div>
                 </div>
             </div>
