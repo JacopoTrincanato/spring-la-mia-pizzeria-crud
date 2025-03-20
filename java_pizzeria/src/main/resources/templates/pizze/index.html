@@ -31,30 +31,31 @@
                             <div th:insert="~{fragments/resources :: button('/pizze/edit/' + *{id}, 'Modifica')}"
                                 class="btn-success"></div>
 
-                            <button type="submit" class="btn btn-danger" data-toggle="modal"
-                                data-target="#deleteModal">x</button>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                th:data-bs-target="'#modal-' + *{id}">
+                                x
+                            </button>
 
                             <!-- Modal -->
-                            <div class="modal fade" th:id="'deleteModal' + *{id}" tabindex="-1" role="dialog"
-                                aria-labelledby="deleteModalTitle" aria-hidden="true">
+                            <div class="modal fade" th:id="'#modal-' + *{id}" tabindex="-1"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteModalLongTitle">Eliminazione
-                                                [[*{nome}]]</h5>
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            Sei sicuro di voler eliminale la pizza [[*{nome}]]?
+                                            ...
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">Chiudi</button>
                                             <form th:action="@{'/pizze/delete/' + *{id}}" method="post">
-                                                <button type="submit" class="btn btn-danger">Cancella</button>
-
+                                                <button type="submit">Cancella</button>
                                             </form>
                                         </div>
                                     </div>
@@ -70,6 +71,7 @@
     </main>
 
     <p th:text="Non ci sono pizze disponibili" th:unless="${pizze.size() > 0}"></p>
+    <div th:replace="~{fragments/resources :: scripts}"></div>
 </body>
 
 </html>
