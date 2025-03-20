@@ -74,4 +74,19 @@ public class PizzaController {
         model.addAttribute("pizza", repository.findById(id).get());
         return "pizze/edit";
     }
+
+    // creo update per modificare gli elementi della card
+    @PostMapping("/edit/{id}")
+    public String update(@Valid @ModelAttribute("pizza") Pizza pizzaForm, BindingResult bindingResult, Model model) {
+
+        // verifico che il processo di validazione sia avvenuto correttamente
+        if (bindingResult.hasErrors()) {
+            return "pizze/create";
+        }
+
+        // aggiorno il dato
+        repository.save(pizzaForm);
+
+        return "redirect:/pizze";
+    }
 }
