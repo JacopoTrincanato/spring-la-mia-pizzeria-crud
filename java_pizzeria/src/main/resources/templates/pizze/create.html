@@ -28,6 +28,43 @@
 
                             </div>
                         </div>
+
+                        <div class="mb-3">
+                            <label for="descrizione">Descrizione</label>
+                            <input type="text" placeholder="Inserisci la descrizione della pizza (ingredienti)"
+                                id="descrizione" class="form-control" th:field="*{descrizione}"
+                                th:errorClass="is-invalid">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('descrizione')}">
+                                <ul class="list-unstyled">
+                                    <li th:each="error : ${#fields.errors('descrizione')}" th:text="${error}"></li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="urlFoto">Immagine</label>
+                            <input type="text" placeholder="Inserisci l'immagine della pizza" id="urlFoto"
+                                class="form-control" th:field="*{urlFoto}" th:errorClass="is-invalid">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('urlFoto')}">
+                                <ul class="list-unstyled">
+                                    <li th:each="error : ${#fields.errors('urlFoto')}" th:text="${error}"></li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="prezzo">Prezzo</label>
+                            <input type="text" placeholder="Inserisci il prezzo della pizza" id="prezzo"
+                                class="form-control" th:field="*{prezzo}" th:errorClass="is-invalid">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('prezzo')}">
+                                <ul class="list-unstyled">
+                                    <li th:each="error : ${#fields.errors('prezzo')}" th:text="${error}"></li>
+                                </ul>
+
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
