@@ -39,4 +39,13 @@ public class PizzaController {
 
         return "pizze/show";
     }
+
+    // creo la rotta create
+    @GetMapping("/create")
+    public String create(Model model) {
+        // creo un nuovo libro
+        model.addAttribute("pizza", new Pizza());
+
+        return "pizze/create";
+    }
 }
