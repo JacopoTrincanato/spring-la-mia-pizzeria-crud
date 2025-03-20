@@ -19,8 +19,8 @@
                         <!--Creo i vari input-->
                         <div class="mb-3">
                             <label for="nome">Nome</label>
-                            <input type="text" placeholder="Inserisci il nome della pizza" id="nome"
-                                class="form-control" th:field="*{nome}" th:errorClass="is-invalid">
+                            <input type="text" placeholder="Inserisci il nome della pizza" minlength="5" maxlength="20"
+                                id="nome" class="form-control" th:field="*{nome}" th:errorClass="is-invalid">
                             <div class="invalid-feedback" th:if="${#fields.hasErrors('nome')}">
                                 <ul class="list-unstyled">
                                     <li th:each="error : ${#fields.errors('nome')}" th:text="${error}"></li>
@@ -57,7 +57,7 @@
                         <div class="mb-3">
                             <label for="prezzo">Prezzo</label>
                             <input type="text" placeholder="Inserisci il prezzo della pizza" id="prezzo"
-                                class="form-control" th:field="*{prezzo}" th:errorClass="is-invalid">
+                                class="form-control" min="0" th:field="*{prezzo}" th:errorClass="is-invalid">
                             <div class="invalid-feedback" th:if="${#fields.hasErrors('prezzo')}">
                                 <ul class="list-unstyled">
                                     <li th:each="error : ${#fields.errors('prezzo')}" th:text="${error}"></li>
@@ -65,6 +65,13 @@
 
                             </div>
                         </div>
+
+                        <div class="mb-3 d-flex justify-content-around">
+                            <button type="submit" class="btn btn-success">Crea la pizza</button>
+
+                            <button type="submit" class="btn btn-warning">Resetta il form</button>
+                        </div>
+
                     </form>
                 </div>
             </div>
