@@ -89,4 +89,13 @@ public class PizzaController {
 
         return "redirect:/pizze";
     }
+
+    // creo la rotta delete
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id) {
+        // elimino l'elemento
+        repository.deleteById(id);
+
+        return "redirect:/pizze";
+    }
 }
