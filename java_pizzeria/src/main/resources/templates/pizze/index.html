@@ -14,6 +14,7 @@
     <main>
 
         <div class="container p-4 ">
+            <a th:href="@{/pizze/create}" class="btn btn-dark m-auto mb-4">Aggiungi +</a>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
                 <div class="card" th:each="pizza : ${pizze}" th:object="${pizza}">

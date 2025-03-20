@@ -67,4 +67,11 @@ public class PizzaController {
 
         return "redirect:/pizze";
     }
+
+    // creo la rotta edit
+    @GetMapping("/edit")
+    public String edit(@PathVariable Integer id, Model model) {
+        model.addAttribute("pizza", repository.findById(id).get());
+        return "pizze/edit";
+    }
 }
