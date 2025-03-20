@@ -69,7 +69,7 @@ public class PizzaController {
     }
 
     // creo la rotta edit
-    @GetMapping("/edit")
+    @GetMapping("/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         model.addAttribute("pizza", repository.findById(id).get());
         return "pizze/edit";
