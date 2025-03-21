@@ -53,8 +53,10 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Understood</button>
+                                                data-bs-dismiss="modal">Chiudi</button>
+                                            <form th:action="@{/pizze/delete/{id}(id = *{id})}" method="post">
+                                                <button type="submit" class="btn btn-danger">Elimina</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
