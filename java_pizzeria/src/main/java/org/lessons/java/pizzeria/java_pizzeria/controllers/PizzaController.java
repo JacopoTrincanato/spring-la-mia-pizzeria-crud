@@ -81,7 +81,7 @@ public class PizzaController {
 
         // verifico che il processo di validazione sia avvenuto correttamente
         if (bindingResult.hasErrors()) {
-            return "pizze/create";
+            return "pizze/edit";
         }
 
         // aggiorno il dato
