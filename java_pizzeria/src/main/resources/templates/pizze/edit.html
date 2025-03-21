@@ -14,8 +14,8 @@
                 <div class="row justify-content-center">
 
                     <!--Creo il form-->
-                    <form class="border border-black rounded p-4" th:action="@{/pizze/edit/{id}(id = pizza.id)}"
-                        th:object="${pizza}" method="post">
+                    <form class="border border-black rounded p-4" th:action="@{/pizze/edit/{id}}" th:object="${pizza}"
+                        method="post">
 
                         <!--Creo i vari input-->
                         <div class="mb-3">
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="mb-3 d-flex justify-content-around">
-                            <button type="submit" class="btn btn-success">Crea la pizza</button>
+                            <button type="submit" class="btn btn-success">Aggiorna la pizza</button>
 
                             <button type="submit" class="btn btn-warning">Resetta il form</button>
                         </div>

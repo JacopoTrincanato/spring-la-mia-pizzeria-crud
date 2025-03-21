@@ -48,7 +48,7 @@ public class PizzaController {
     // creo la rotta create
     @GetMapping("/create")
     public String create(Model model) {
-        // creo un nuovo libro
+        // creo una nuova pizza
         model.addAttribute("pizza", new Pizza());
 
         return "pizze/create";
