@@ -33,18 +33,20 @@
 
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">
+                                th:data-bs-target="'#modal-' + *{id}">
                                 x
                             </button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                            <div class="modal fade" th:id="'modal-' + *{id}" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalLabel-[[*{id}]]"
                                 aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                            <h1 class="modal-title fs-5" th:id="'modalLabel-' + *{id}">
+                                                Cancellazione della pizza [[*{nome}]]
+                                            </h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -54,13 +56,14 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Chiudi</button>
-                                            <form th:action="@{/pizze/delete/{id}(id = *{id})}" method="post">
+                                            <form th:action="@{/pizze/delete/{id}(id=*{id})}" method="post">
                                                 <button type="submit" class="btn btn-danger">Elimina</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
