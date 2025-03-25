@@ -9,7 +9,7 @@
 <body class="bg-light">
 
     <header>
-        <h1 class="text-center">Lista pizze</h1>
+        <h1 class="text-center p-4">Lista pizze</h1>
     </header>
     <main>
 
@@ -25,11 +25,10 @@
                         <p>Prezzo: [[*{prezzo}]] euro</p>
 
                         <div class="d-flex justify-content-between">
-                            <div th:insert="~{fragments/resources :: button('/pizze/' + *{id}, 'Leggi di più')}"
-                                class="btn-primary text-decoration-none">
+                            <div th:replace="~{fragments/resources :: cardButtons('/pizze/' + *{id}, 'Leggi di più')}">
                             </div>
-                            <div th:insert="~{fragments/resources :: button('/pizze/edit/' + *{id}, 'Modifica')}"
-                                class="btn-success"></div>
+                            <div th:replace="~{fragments/resources :: cardButtons('/pizze/edit/' + *{id}, 'Modifica')}">
+                            </div>
 
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
