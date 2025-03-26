@@ -2,6 +2,7 @@
 <html xmlns:th="https://www.thymeleaf.org">
 
 <head>
+    <!--Inserisco il fragment per i tag dell'head-->
     <th:block th:replace="~{fragments/resources :: headTags}"></th:block>
     <title>Pizze</title>
 </head>
@@ -25,18 +26,20 @@
                         <p>Prezzo: [[*{prezzo}]] euro</p>
 
                         <div class="d-flex justify-content-between">
+
+                            <!--Inserisco i fragment per i bottoni della card-->
                             <div th:replace="~{fragments/resources :: cardButtons('/pizze/' + *{id}, 'Leggi di più')}">
                             </div>
                             <div th:replace="~{fragments/resources :: cardButtons('/pizze/edit/' + *{id}, 'Modifica')}">
                             </div>
 
-                            <!-- Button trigger modal -->
+                            <!-- Bottone che triggera la modale -->
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                 th:data-bs-target="'#modal-' + *{id}">
                                 x
                             </button>
 
-                            <!-- Modal -->
+                            <!-- Modale -->
                             <div class="modal fade" th:id="'modal-' + *{id}" data-bs-backdrop="static"
                                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalLabel-[[*{id}]]"
                                 aria-hidden="true">
