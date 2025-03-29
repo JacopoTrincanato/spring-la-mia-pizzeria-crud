@@ -2,7 +2,9 @@ package org.lessons.java.pizzeria.java_pizzeria.controllers;
 
 import java.util.List;
 
+import org.lessons.java.pizzeria.java_pizzeria.models.OffertaSpeciale;
 import org.lessons.java.pizzeria.java_pizzeria.models.Pizza;
+import org.lessons.java.pizzeria.java_pizzeria.repository.OffertaSpecialeRepository;
 import org.lessons.java.pizzeria.java_pizzeria.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,10 @@ public class PizzaController {
 
     @Autowired
     private PizzaRepository repository;
+
+    // aggiungo la repository dell'offerta
+    @Autowired
+    private OffertaSpecialeRepository offertaSpecialeRepository;
 
     // creo la rotta index
     @GetMapping
@@ -93,8 +99,17 @@ public class PizzaController {
     // creo la rotta delete
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable Integer id) {
-        // elimino l'elemento
-        repository.deleteById(id);
+
+        // trovo la pizza per id
+        Pizza pizza = repository.findById(id).get();
+
+        // prendo tutte le offerte legate alla pizza e le elimino
+        for (OffertaSpeciale offerteDaEliminare : pizza.getOfferteSpeciali()) {
+            offertaSpecialeRepository.delete(offerteDaEliminare);
+        }
+
+        // cancello la pizza
+        repository.delete(pizza);
 
         return "redirect:/pizze";
     }
