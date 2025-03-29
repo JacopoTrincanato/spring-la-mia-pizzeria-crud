@@ -8,11 +8,11 @@
 
 <body>
 
-    <div class="container" th:object="${pizza}">
+    <div class="container">
         <section class="row">
             <div class="col-12">
 
-                <h1 class="py-4 mb-2 text-center">offerta Speciale [[${offertaSpeciale.getPizza().getTitolo()}]]</h1>
+                <h1 class="py-4 mb-2 text-center">offerta Speciale</h1>
                 <div class="row justify-content-center">
                     <div class="col-12">
 
@@ -22,6 +22,18 @@
 
                             <!--input non visibile. Nascondo dalla visualizzazione i dati della pizza-->
                             <input type="hidden" th:field="*{pizza}" id="linked-pizza">
+
+                            <div class="mb-3">
+                                <label for="titolo">titolo</label>
+                                <input type="text" placeholder="Inserisci il titolo dell'offerta" id="titolo"
+                                    class="form-control" th:field="*{titolo}" th:errorClass="is-invalid">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('titolo')}">
+                                    <ul class="list-unstyled">
+                                        <li th:each="error : ${#fields.errors('titolo')}" th:text="${error}"></li>
+                                    </ul>
+
+                                </div>
+                            </div>
 
                             <div class="mb-3">
 

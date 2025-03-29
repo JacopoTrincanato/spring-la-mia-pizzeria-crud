@@ -23,7 +23,7 @@ public class OffertaSpecialeController {
 
     // rotta store
     @PostMapping("/create")
-    public String store(@Valid @ModelAttribute("offerta") OffertaSpeciale offertaSpecialeForm,
+    public String store(@Valid @ModelAttribute("offertaSpeciale") OffertaSpeciale offertaSpecialeForm,
             BindingResult bindingResult, Model model) {
 
         // controllo che la verifica sia avvenuta correttamente
@@ -35,7 +35,7 @@ public class OffertaSpecialeController {
         repository.save(offertaSpecialeForm);
 
         // reindirizzo alla pagina della singola pizza
-        return "redirect:/pizza/" + offertaSpecialeForm.getPizza().getId();
+        return "redirect:/pizze/" + offertaSpecialeForm.getPizza().getId();
     }
 
     // metodo edit da compilare
@@ -51,7 +51,7 @@ public class OffertaSpecialeController {
 
     // metodo che restituisce un update con validazione
     @PostMapping("/edit/{id}")
-    public String update(@Valid @ModelAttribute("offerta") OffertaSpeciale offertaSpecialeForm,
+    public String update(@Valid @ModelAttribute("offertaSpeciale") OffertaSpeciale offertaSpecialeForm,
             BindingResult bindingResult, Model model) {
 
         // controllo che la verifica sia avvenuta correttamente
@@ -63,6 +63,6 @@ public class OffertaSpecialeController {
         repository.save(offertaSpecialeForm);
 
         // reindirizzo alla pagina della singola pizza
-        return "redirect:/pizza/" + offertaSpecialeForm.getPizza().getId();
+        return "redirect:/pizze/" + offertaSpecialeForm.getPizza().getId();
     }
 }
