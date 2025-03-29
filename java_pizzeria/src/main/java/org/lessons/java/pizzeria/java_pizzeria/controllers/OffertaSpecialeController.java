@@ -28,7 +28,7 @@ public class OffertaSpecialeController {
 
         // controllo che la verifica sia avvenuta correttamente
         if (bindingResult.hasErrors()) {
-            return "offerteSpeciali/create-or-edit";
+            return "offerte_speciali/create-or-edit";
         }
 
         // salvo i dati del form
@@ -46,17 +46,17 @@ public class OffertaSpecialeController {
 
         model.addAttribute("edit", true);
 
-        return "offerteSpeciali/create-or-edit";
+        return "offerte_speciali/create-or-edit";
     }
 
     // metodo che restituisce un update con validazione
-    @PostMapping("/edit{id/")
+    @PostMapping("/edit/{id}")
     public String update(@Valid @ModelAttribute("offerta") OffertaSpeciale offertaSpecialeForm,
             BindingResult bindingResult, Model model) {
 
         // controllo che la verifica sia avvenuta correttamente
         if (bindingResult.hasErrors()) {
-            return "offerteSpeciali/create-or-edit";
+            return "offerte_speciali/create-or-edit";
         }
 
         // salvo i dati del form

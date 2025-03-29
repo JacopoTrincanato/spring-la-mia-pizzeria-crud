@@ -33,6 +33,10 @@
                             <div th:replace="~{fragments/resources :: cardButtons('/pizze/edit/' + *{id}, 'Modifica')}">
                             </div>
 
+                            <div
+                                th:replace="~{fragments/resources :: cardButtons('/pizze/' + *{id} + '/offerte', 'Offerte')}">
+                            </div>
+
                             <!-- Bottone che triggera la modale -->
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                 th:data-bs-target="'#modal-' + *{id}">
