@@ -90,6 +90,14 @@ public class Pizza {
         this.prezzo = prezzo;
     }
 
+    public List<OffertaSpeciale> getOfferteSpeciali() {
+        return this.offerteSpeciali;
+    }
+
+    public void setOfferteSpeciali(List<OffertaSpeciale> offerteSpeciali) {
+        this.offerteSpeciali = offerteSpeciali;
+    }
+
     @Override
     public String toString() {
         return String.format("Nome: %s, Descrizione: %s, Prezzo: %bd", this.nome, this.descrizione, this.prezzo);
