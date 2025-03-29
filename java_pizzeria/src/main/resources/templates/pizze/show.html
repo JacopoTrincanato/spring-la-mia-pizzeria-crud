@@ -24,6 +24,41 @@
             </div>
 
         </div>
+
+        <section class="row mb-3">
+            <div class="col-12" th:unless="${pizza.getOfferteSpeciali().size() > 0}">
+                <div class="alert alert-warning">
+                    <h3>La pizza non ha nessuna offerta</h3>
+                </div>
+            </div>
+            <div class="col-12" th:if="${pizza.getOfferteSpeciali().size() > 0}">
+                <h2 class="fw-bold">Offerte Speciali</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Titolo</th>
+                            <th>Data d'inizio</th>
+                            <th>Data di fine</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr th:each="offerta : ${offerteSpeciali}" th:object="${offerta}">
+
+                            <td>[[*{dataFine}]]</td>
+                            <td th:if="*{dataFine} != null">[[*{dataFine}]]</td>
+                            <td th:unless="*{dataFine} != null">L'offerta è scaduta</td>
+
+                            <td><a class="btn btn-success btn-sm"
+                                    th:href="@{/offerte/edit/{id}(id = offerta.id)}"></a>Aggiorna
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </main>
 
 </body>
