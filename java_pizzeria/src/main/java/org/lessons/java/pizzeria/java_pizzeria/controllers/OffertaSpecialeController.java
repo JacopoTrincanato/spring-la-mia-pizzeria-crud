@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,6 +21,7 @@ public class OffertaSpecialeController {
     @Autowired
     private OffertaSpecialeRepository repository;
 
+    // rotta store
     @PostMapping("/create")
     public String store(@Valid @ModelAttribute("offerta") OffertaSpeciale offertaSpecialeForm,
             BindingResult bindingResult, Model model) {
@@ -26,6 +29,34 @@ public class OffertaSpecialeController {
         // controllo che la verifica sia avvenuta correttamente
         if (bindingResult.hasErrors()) {
             return "offerteSpeciali/create";
+        }
+
+        // salvo i dati del form
+        repository.save(offertaSpecialeForm);
+
+        // reindirizzo alla pagina della singola pizza
+        return "redirect:/pizza/" + offertaSpecialeForm.getPizza().getId();
+    }
+
+    // metodo edit da compilare
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Integer id, Model model) {
+
+        model.addAttribute("offerta", repository.findById(id).get());
+
+        model.addAttribute("edit", true);
+
+        return "offerteSpeciali/edit";
+    }
+
+    // metodo che restituisce un update con validazione
+    @PostMapping("/edit{id/")
+    public String update(@Valid @ModelAttribute("offerta") OffertaSpeciale offertaSpecialeForm,
+            BindingResult bindingResult, Model model) {
+
+        // controllo che la verifica sia avvenuta correttamente
+        if (bindingResult.hasErrors()) {
+            return "offerteSpeciali/edit";
         }
 
         // salvo i dati del form
