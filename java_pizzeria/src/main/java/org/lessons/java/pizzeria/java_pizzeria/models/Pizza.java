@@ -1,6 +1,7 @@
 package org.lessons.java.pizzeria.java_pizzeria.models;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import jakarta.persistence.Id;
 
@@ -9,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -39,9 +41,13 @@ public class Pizza {
     private String urlFoto;
 
     @Column(name = "prezzo_pizza", nullable = false)
-    @NotNull
+    @NotNull(message = "il campo prezzo non può essere null")
     @Min(value = 0, message = "Il prezzo non può avere un valore inferiore a zero")
     private BigDecimal prezzo;
+
+    // implemento la relazione OneToMany tra la pizza e le possibili offerte
+    @OneToMany(mappedBy = "pizza")
+    private List<OffertaSpeciale> offerteSpeciali;
 
     // metodi
     public Integer getId() {
