@@ -113,4 +113,20 @@ public class PizzaController {
 
         return "redirect:/pizze";
     }
+
+    // rotta che collega l'offerta alla singola pizza
+    @GetMapping("/{id}/offerte")
+    public String offerta(@PathVariable Integer id, Model model) {
+
+        // creo una nuova offerta
+        OffertaSpeciale offertaSpeciale = new OffertaSpeciale();
+
+        // passo la pizza all'Offerta Speciale
+        offertaSpeciale.setPizza(repository.findById(id).get());
+
+        // passo l'info alla pagina
+        model.addAttribute("offerta", offertaSpeciale);
+
+        return "offerteSpeciali/create-or-edit";
+    }
 }

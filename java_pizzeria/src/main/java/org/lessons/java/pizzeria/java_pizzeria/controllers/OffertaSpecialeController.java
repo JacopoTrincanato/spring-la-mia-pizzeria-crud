@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/offerta")
+@RequestMapping("/offerte")
 public class OffertaSpecialeController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class OffertaSpecialeController {
 
         // controllo che la verifica sia avvenuta correttamente
         if (bindingResult.hasErrors()) {
-            return "offerteSpeciali/create";
+            return "offerteSpeciali/create-or-edit";
         }
 
         // salvo i dati del form
@@ -46,7 +46,7 @@ public class OffertaSpecialeController {
 
         model.addAttribute("edit", true);
 
-        return "offerteSpeciali/edit";
+        return "offerteSpeciali/create-or-edit";
     }
 
     // metodo che restituisce un update con validazione
@@ -56,7 +56,7 @@ public class OffertaSpecialeController {
 
         // controllo che la verifica sia avvenuta correttamente
         if (bindingResult.hasErrors()) {
-            return "offerteSpeciali/edit";
+            return "offerteSpeciali/create-or-edit";
         }
 
         // salvo i dati del form
